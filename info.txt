@@ -1,0 +1,13 @@
+
+Развертывание проекта в режиме разработки.
+
+Для создания контейнера liberty_postgres:
+docker build -t liberty_postgres postgres
+Для запуска контейнера:
+docker run --name liberty_postgres -d -p 5432:5432 liberty_postgres
+Запуск сервера Open Liberty в режиме разработки:
+./mvnw liberty:dev
+Остановка контейнера базы данных
+docker stop liberty_postgres
+Запуск созданного раннее контейнера базы:
+docker start liberty_postgres
