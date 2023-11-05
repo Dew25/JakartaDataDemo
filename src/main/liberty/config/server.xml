@@ -1,0 +1,25 @@
+<server description="demo2">
+	<featureManager>
+		<feature>beanValidation-3.0</feature>	   
+		<feature>passwordUtilities-1.0</feature>
+		<feature>restfulWS-3.1</feature>
+		<feature>cdi-4.0</feature>
+		<feature>jsonb-3.0</feature>
+		<feature>data-1.0</feature>
+		<feature>persistence-3.1</feature>
+	</featureManager>
+	
+	<httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
+
+	<webApplication location="demo2.war" contextRoot="/demo2"/>
+
+	<library id="PostgresLib">
+		<fileset dir="${server.config.dir}/lib/postgres" includes="*.jar"/>
+	</library>
+
+	<dataSource id="DefaultDataSource" jndiName="jdbc/postgres">
+		<jdbcDriver libraryRef="PostgresLib"/>
+		<properties.postgresql databaseName="testdb" serverName="localhost" portNumber="5432" user="sampleUser" password="{aes}APtt+/vYxxPa0jE1rhmZue9wBm3JGqFK3JR4oJdSDGWM1wLr1ckvqkqKjSB2Voty8g=="/>
+	</dataSource>
+
+</server>
